@@ -353,7 +353,7 @@ def process_organization(
             environments = gd_config.get_environment_workspaces(data_product.environment_setup_id)
             for environment in environments:
                 if environment.id == args.gooddata_environment_id:
-                    if args.workspace_id is not None:
+                    if "workspace_id" in args and args.workspace_id is not None:
                         workspace_id = args.workspace_id
                     else:
                         workspace_id = f"{data_product.id}_{environment.id}"
