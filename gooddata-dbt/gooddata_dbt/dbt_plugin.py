@@ -353,7 +353,10 @@ def process_organization(
             environments = gd_config.get_environment_workspaces(data_product.environment_setup_id)
             for environment in environments:
                 if environment.id == args.gooddata_environment_id:
-                    workspace_id = f"{data_product.id}_{environment.id}"
+                    if args.workspace_id is not None:
+                        workspace_id = args.workspace_id
+                    else:
+                        workspace_id = f"{data_product.id}_{environment.id}"
                     workspace_title = f"{data_product.name} ({environment.name})"
                     if args.method == "provision_workspaces":
                         create_workspace(logger, sdk_wrapper, workspace_id, workspace_title)

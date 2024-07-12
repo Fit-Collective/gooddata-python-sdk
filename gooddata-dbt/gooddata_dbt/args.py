@@ -92,6 +92,11 @@ def set_dbt_args(parser: argparse.ArgumentParser) -> None:
         help="dbt target/output. DB where dbt deploys. GoodData registers it as data source.",
         default=os.getenv("ELT_ENVIRONMENT", "cicd_dev_local"),
     )
+    parser.add_argument(
+        "-w",
+        "--workspace_id",
+        help="Gooddata workspace"
+    )
 
 
 def set_dbt_cloud_args(parser: argparse.ArgumentParser) -> None:
